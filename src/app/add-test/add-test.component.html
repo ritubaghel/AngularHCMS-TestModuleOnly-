@@ -1,0 +1,66 @@
+<h1 align="center">Add Test</h1>
+<div class="row justify-content-center">
+    <div class="col-sm-4 text-left bg-white rounded shadow py-13">
+      
+<form #formdata="ngForm" (ngSubmit)="formdata.valid && register(formdata)">
+    <p class="text-danger"><small>{{msg}}</small></p>
+    <div>
+        <label>Test Name</label><br>
+            <input type="text" ngModel name="testName" class="form-control" required minlength="2" ngModel
+                #testName="ngModel">
+    </div>
+
+    <div *ngIf="testName.errors!=null && testName.errors.required">
+        Test Name is required.
+    </div>
+
+    <div *ngIf="testName.errors!=null && testName.errors.minlength">
+        minimum length should be 2
+    </div>
+    <br>
+    <div>
+        <label>Test Price</label><br>
+        <input type="number" name="testPrice" class="form-control" required ngModel #testPrice="ngModel">
+    </div>
+
+    <div *ngIf="testPrice.errors!=null && testPrice.errors.required">
+        test Price is required.
+    </div>
+    <br>
+    <div>
+        <label>Center Id</label><br>
+        <input type="number" name="centerId" class="form-control" required ngModel #centerId="ngModel">
+    </div>
+    <div *ngIf="centerId.errors!=null && centerId.errors.required">
+        Center Id is required.
+    </div>
+    <br>
+    
+     <button type="button" type="submit" value="submit" class="btn btn-success">Add Test</button>
+
+</form>
+<br>
+
+
+<div id="result" *ngIf="result!=null">
+    <p class="text-success">Test added successfully!!</p>
+    <table class="table table-striped">
+        
+        <tr>
+            <th>TestId</th>
+            <th>TestName</th>
+            <th>Test Price</th>
+
+        </tr>
+   
+        <tr>
+            <td>{{result.testId}}</td>
+            <td>{{result.testName}}</td>
+            <td>{{result.testPrice}}</td>
+           
+
+        </tr>
+    </table>
+</div>
+    </div>
+    </div>
